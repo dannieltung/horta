@@ -1,0 +1,11 @@
+<h1>user_id#1 Product's Index</h1>
+<%= link_to 'Add a Product', new_user_product_path(@user), class: "btn btn-primary btn-sm" %>
+<div class="container">
+  <% @products.each do |product| %>
+    <h4> <%= link_to product.name, product %> </h4>
+    <h4> stock: <%= product.stock %> </h4>
+    <h4> price: <%= product.price %> </h4>
+    <hr>
+  <% end %>
+</div>
+<%= link_to 'Home Page', root_path %>

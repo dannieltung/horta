@@ -1,0 +1,11 @@
+<h1>user_id#1 Product's New</h1>
+<div class="container">
+  <%= simple_form_for [@user, @product] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :stock %>
+    <%= f.input :price %>
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>
+<p><%= link_to "user_id#1 Product's Index", user_products_path(@user) %></p>
+<p><%= link_to 'Home Page', root_path %></p>
