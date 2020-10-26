@@ -1,0 +1,10 @@
+<h1>product_id#1 Product's Index</h1>
+<%= link_to 'Make a Transaction', new_user_product_path(@user), class: "btn btn-primary btn-sm" %>
+<div class="container">
+  <% @trans.each do |tran| %>
+    <h4> <%= link_to tran.quantity, tran %> </h4>
+    <h4> stock: <%= product.status %> </h4>
+    <hr>
+  <% end %>
+</div>
+<%= link_to 'Home Page', root_path %>
