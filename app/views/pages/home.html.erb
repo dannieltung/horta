@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Root's View</h1>
+<div class="container">
+  <% @products.each do |product| %>
+    <div class="card-product">
+      <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", :alt => "rss feed") %>
+      <div class="card-product-infos">
+        <h2><%= link_to product.name, product %></h2>
+        <h4>R$ <%= product.price %>,00</h4>
+        <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning btn-sm' %>
+      </div>
+    </div>
+  <% end %>
+</div>
