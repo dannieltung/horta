@@ -5,5 +5,5 @@
 <p> price: <%= @product.price %> </p>
 <p> Belongs to user_id#: <%= @product.user_id %> </p>
 <p><%= link_to 'Edit Product', edit_product_path(@product) %></p>
-<p><%= link_to "user_id#1 Product's Index", user_products_path(@product.user_id) %></p>
+<p><%= link_to "user_id#1 Product's Index", products_path(@product.user_id) %></p>
 <p><%= link_to 'Home Page', root_path %></p>
