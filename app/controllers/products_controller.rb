@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
     @products = Product.all
   end
 
@@ -9,15 +8,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
     @product = Product.new
   end
 
   def create
-    @user = User.find(params[:user_id])
     @product = Product.new(product_params)
     # aqui ele vai instanciar um product com caracteristicas NEW
-    @product.user = @user
+    @product.user = current_user
     if @product.save
       redirect_to product_path(@product), notice: 'Product created!'
     else

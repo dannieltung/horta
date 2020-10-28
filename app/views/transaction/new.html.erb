@@ -1,6 +1,6 @@
 <h1>user_id#1 Product's New</h1>
 <div class="container">
-  <%= simple_form_for [@user, @product, ] do |f| %>
+  <%= simple_form_for [@user, @product, @transactions] do |f| %>
     <%= f.input :quantity %>
     <%= f.input :status %>
     <%= f.submit class: 'btn btn-success' %>

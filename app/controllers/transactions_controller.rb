@@ -1,24 +1,31 @@
 class TransactionsController < ApplicationController
   def index
-    @products = Products.find(params[:product_id])
-    @trans = Tran.all
+    @transactions = Transaction.all
   end
 
   def show
-    @tran = Trans.show(params[:id])
+    @transactions = Transaction.show(params[:id])
   end
 
-  def new
-    @products = Product.find(params[:product_id])
-    @tran = Trans.new
-  end
+  # ficou desnecessario ter esse metodo
+  # def new
+  #   @user = User.find(params[:user_id])
+  #   @products = Product.find(params[:product_id])
+  #   @transactions = Transaction.new
+  # end
 
   def create
-    @products = Product.find(params[:product_id])
-    @tran = Trans.new(product_params)
+    @product = Product.find(params[:product_id])
+    @transaction = Transaction.new(product_params)
     # aqui ele vai instanciar um product com caracteristicas NEW
-    @tran.products = @tran
-    if @tran.save
+    @transaction.product = @product
+    @transaction.user = current_user
+
+    raise
+    # @transaction.valid?
+    # @transaction.errors.messages
+
+    if @transaction.save
       redirect_to product_path(@product), notice: 'Transaction completed!'
     else
       render :new
@@ -28,6 +35,6 @@ class TransactionsController < ApplicationController
   private
 
   def transction_params
-    params.require(:tran).permit(:quantity, :status)
+    params.require(:transactions).permit(:quantity, :status)
   end
 end
