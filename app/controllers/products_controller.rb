@@ -1,25 +1,25 @@
 class ProductsController < ApplicationController
 
   def index
-    # @products = Product.where(user: current_user)
-    @products = policy_scope(Product).order(name: :asc)
+    @products = Product.where(user: current_user)
+    # @products = policy_scope(Product).order(name: :asc)
   end
 
   def show
     @product = Product.find(params[:id])
-    authorize @product
+    # authorize @product
     @user = @product.user
     # fiz isso para poder printar o email do usuário owner e o ror já entende que é pra localizar pelo id.
   end
 
   def new
     @product = Product.new
-    authorize @product
+    # authorize @product
   end
 
   def create
     @product = Product.new(product_params)
-    authorize @product
+    # authorize @product
     @product.user = current_user
     if @product.save
       redirect_to product_path(@product), notice: 'Product created!'
@@ -30,18 +30,18 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    # unless @product.user == current_user
-    #   redirect_to root_path, notice: 'Not allowed to Edit 😥'
-    # end
-    authorize @product
+    unless @product.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Edit 😥'
+    end
+    # authorize @product
   end
 
   def update
     @product = Product.find(params[:id])
-    # unless @product.user == current_user
-    #   redirect_to root_path, notice: 'Not allowed to Update 😥'
-    # end
-    authorize @product
+    unless @product.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Update 😥'
+    end
+    # authorize @product
     if @product.update(product_params)
       redirect_to product_path(@product), notice: 'Product updated!'
     else
@@ -51,10 +51,10 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    # unless @product.user == current_user
-    #   redirect_to root_path, notice: 'Not allowed to Delete 😠'
-    # end
-    authorize @product
+    unless @product.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Delete 😠'
+    end
+    # authorize @product
     @product.destroy
     # @product.stock = 0
     # a Pat levantou a questão de ao invés de destroy, setarmos o stock para 0
