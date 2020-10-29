@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    # @products = Product.all
+    @products = policy_scope(Product).order(created_at: :desc)
   end
 
   def show
