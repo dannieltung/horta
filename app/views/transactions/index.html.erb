@@ -1,0 +1,6 @@
+<% @transactions.each do |transaction| %>
+  <p><%= transaction.user.email %></p>
+  <p><%= transaction.product.name %></p>
+  <p> <%= transaction.quantity %> </p>
+  <hr>
+<% end %>

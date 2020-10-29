@@ -4,29 +4,28 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    @transactions = Transaction.show(params[:id])
+    @transaction = Transaction.find(params[:id])
+    @user = @transaction.user
+    @product = @transaction.product
   end
 
-  # ficou desnecessario ter esse metodo
-  # def new
-  #   @user = User.find(params[:user_id])
-  #   @products = Product.find(params[:product_id])
-  #   @transactions = Transaction.new
-  # end
+  def new
+    @transaction = Transaction.new
+  end
 
   def create
-    @product = Product.find(params[:product_id])
-    @transaction = Transaction.new(product_params)
-    # aqui ele vai instanciar um product com caracteristicas NEW
-    @transaction.product = @product
+    @transaction = Transaction.new(transaction_params)
     @transaction.user = current_user
+    # o devise já não faz entender que o user é o current_user?
+    # @product = Product.find(params[:product_id])
+    # @transaction.product = @product
 
-    raise
+    # raise
+    # fazer as seguintes checagens:
     # @transaction.valid?
     # @transaction.errors.messages
-
     if @transaction.save
-      redirect_to product_path(@product), notice: 'Transaction completed!'
+      redirect_to transaction_path(@transaction), notice: 'Transaction created!'
     else
       render :new
     end
@@ -34,7 +33,7 @@ class TransactionsController < ApplicationController
 
   private
 
-  def transction_params
-    params.require(:transactions).permit(:quantity, :status)
+  def transaction_params
+    params.require(:transaction).permit(:quantity, :product_id)
   end
 end
