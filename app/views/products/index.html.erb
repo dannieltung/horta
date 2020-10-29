@@ -1,11 +1,14 @@
-<h1>user_id#1 Product's Index</h1>
+<h1><%= "#{current_user.email}" %> Product's Index</h1>
 <%= link_to 'Add a Product', new_product_path, class: "btn btn-primary btn-sm" %>
 <div class="container">
   <% @products.each do |product| %>
-    <h4> <%= link_to product.name, product %> </h4>
+    <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
     <h4> stock: <%= product.stock %> </h4>
     <h4> price: <%= product.price %> </h4>
+    <% if product.user == current_user %>
+      <!-- < if product.user == current_user || current_user.admin > -->
+      <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+    <% end %>
     <hr>
   <% end %>
 </div>
-<%= link_to 'Home Page', root_path %>

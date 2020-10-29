@@ -1,4 +1,5 @@
 class ApplicationPolicy
+  # aqui é a policy para todos os modelos. então não se deve mexer aqui.
   attr_reader :user, :record
 
   def initialize(user, record)

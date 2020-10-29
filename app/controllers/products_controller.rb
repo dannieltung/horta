@@ -1,20 +1,25 @@
 class ProductsController < ApplicationController
+
   def index
-    # @products = Product.all
-    @products = policy_scope(Product).order(created_at: :desc)
+    # @products = Product.where(user: current_user)
+    @products = policy_scope(Product).order(name: :asc)
   end
 
   def show
     @product = Product.find(params[:id])
+    authorize @product
+    @user = @product.user
+    # fiz isso para poder printar o email do usuário owner e o ror já entende que é pra localizar pelo id.
   end
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(product_params)
-    # aqui ele vai instanciar um product com caracteristicas NEW
+    authorize @product
     @product.user = current_user
     if @product.save
       redirect_to product_path(@product), notice: 'Product created!'
@@ -25,11 +30,18 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    # unless @product.user == current_user
+    #   redirect_to root_path, notice: 'Not allowed to Edit 😥'
+    # end
+    authorize @product
   end
 
   def update
     @product = Product.find(params[:id])
-    # aqui ele vai instanciar com as características do product achado
+    # unless @product.user == current_user
+    #   redirect_to root_path, notice: 'Not allowed to Update 😥'
+    # end
+    authorize @product
     if @product.update(product_params)
       redirect_to product_path(@product), notice: 'Product updated!'
     else
@@ -37,11 +49,22 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    # unless @product.user == current_user
+    #   redirect_to root_path, notice: 'Not allowed to Delete 😠'
+    # end
+    authorize @product
+    @product.destroy
+    # @product.stock = 0
+    # a Pat levantou a questão de ao invés de destroy, setarmos o stock para 0
+    redirect_to root_path, notice: 'Product destroyed'
+  end
+
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :stock, :price, :user_id)
+    params.require(:product).permit(:name, :stock, :price)
   end
-  # é certo eu liberar o user_id em caso de update? user pode dizer que pertence a outro user.
-
 end
