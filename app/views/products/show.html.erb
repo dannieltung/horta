@@ -1,9 +1,14 @@
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 <p>Product's Show</p>
+<% if @product.user == current_user %>
+  <%= link_to "Product's Index", products_path, class: 'btn btn-light btn-sm' %>
+<% end %>
 <h1> <%= @product.name %> </h1>
 <p> stock: <%= @product.stock %> </p>
 <p> price: <%= @product.price %> </p>
-<p> Belongs to user_id#: <%= @product.user_id %> </p>
-<p><%= link_to 'Edit Product', edit_product_path(@product) %></p>
-<p><%= link_to "user_id#1 Product's Index", products_path(@product.user_id) %></p>
-<p><%= link_to 'Home Page', root_path %></p>
+<p> Belongs to user: <%= @user.email %> </p>
+<% if @product.user == current_user %>
+  <!-- < if @product.user == current_user || current_user.admin > -->
+  <%= link_to 'Edit', edit_product_path(@product), class: 'btn btn-secondary btn-sm' %>
+  <%= link_to 'Delete', product_path(@product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+<% end %>

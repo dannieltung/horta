@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <h1>Root's View</h1>
 <div class="container">
   <% @products.each do |product| %>
@@ -6,7 +7,11 @@
       <div class="card-product-infos">
         <h2><%= link_to product.name, product %></h2>
         <h4>R$ <%= product.price %>,00</h4>
-        <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning btn-sm' %>
+        <% if product.user == current_user %>
+          <!-- < if product.user == current_user || current_user.admin > -->
+          <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-secondary btn-sm' %>
+          <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
       </div>
     </div>
   <% end %>
