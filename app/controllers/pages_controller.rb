@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @products = Product.all.select do |product|
-      product.stock > 0
+      product.remove == false
     end
   end
 end
