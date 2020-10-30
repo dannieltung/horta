@@ -55,7 +55,6 @@ class ProductsController < ApplicationController
       redirect_to root_path, notice: 'Not allowed to Delete 😠'
     end
     # authorize @product
-    # @product.destroy
     @product.update(remove: true)
     redirect_to root_path, notice: 'Product destroyed'
   end
