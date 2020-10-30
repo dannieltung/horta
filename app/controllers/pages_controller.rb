@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     products = Product.all.select do |product|
-      product.remove == false
+      product.stock.positive? && product.remove == false
     end
     @products = products.sort_by { |event| [event.name] }
   end
