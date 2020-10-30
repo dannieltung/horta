@@ -55,9 +55,8 @@ class ProductsController < ApplicationController
       redirect_to root_path, notice: 'Not allowed to Delete 😠'
     end
     # authorize @product
-    @product.destroy
-    # @product.stock = 0
-    # a Pat levantou a questão de ao invés de destroy, setarmos o stock para 0
+    # @product.destroy
+    @product.update(stock: 0)
     redirect_to root_path, notice: 'Product destroyed'
   end
 

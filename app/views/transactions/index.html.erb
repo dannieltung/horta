@@ -1,6 +1,7 @@
 <% @transactions.each do |transaction| %>
   <p><%= transaction.user.email %></p>
-  <p><%= transaction.product.name %></p>
-  <p> <%= transaction.quantity %> </p>
+  <p> <%= link_to "Transaction id# #{transaction.id}", transaction_path(transaction) %> </p>
+  <p> product: <%= transaction.product.name %> </p>
+  <p> quantity: <%= transaction.quantity %> </p>
   <hr>
 <% end %>

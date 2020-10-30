@@ -9,11 +9,12 @@ class TransactionsController < ApplicationController
     @product = @transaction.product
   end
 
-  def new
-    @transaction = Transaction.new
-  end
+  # def new
+  #   @transaction = Transaction.new
+  # end
 
   def create
+    # raise
     @transaction = Transaction.new(transaction_params)
     @transaction.user = current_user
     # o devise já não faz entender que o user é o current_user?
