@@ -4,8 +4,8 @@
   <% @products.each do |product| %>
     <% if product.remove == false %>
       <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
-      <h4> stock: <%= product.stock %> </h4>
-      <h4> price: <%= product.price %> </h4>
+      <h4> available: <%= product.stock %> pieces </h4>
+      <h4> price: USD <%= product.price %>.00 </h4>
       <% if product.user == current_user %>
         <!-- < if product.user == current_user || current_user.admin > -->
         <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
