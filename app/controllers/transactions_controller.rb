@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.where(user: current_user)
   end
 
   def show
@@ -14,18 +14,17 @@ class TransactionsController < ApplicationController
   # end
 
   def create
-    # raise
     @transaction = Transaction.new(transaction_params)
     @transaction.user = current_user
-    # o devise já não faz entender que o user é o current_user?
-    # @product = Product.find(params[:product_id])
-    # @transaction.product = @product
 
     # raise
     # fazer as seguintes checagens:
     # @transaction.valid?
     # @transaction.errors.messages
+
     if @transaction.save
+      after_stock = Product.find(@transaction.product_id).stock - @transaction.quantity
+      Product.find(@transaction.product_id).update(stock: after_stock)
       redirect_to transaction_path(@transaction), notice: 'Transaction created!'
     else
       render :new

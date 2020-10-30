@@ -1,9 +1,9 @@
-<h1>Add a Product's view</h1>
+<h1>New Item</h1>
 <div class="container">
   <%= simple_form_for [@user, @product] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :stock %>
-    <%= f.input :price %>
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.input :name, label: 'Item Name' %>
+    <%= f.input :stock, label: 'Availability' %>
+    <%= f.input :price, label: 'Price per Unit' %>
+    <%= f.submit 'Add', class: 'btn btn-success' %>
   <% end %>
 </div>
