@@ -24,7 +24,7 @@ puts "Seeding Users..."
   )
   puts "User #{user.email} with id# #{user.id} created"
   puts "Seeding Products..."
-  2.times do
+  5.times do
     product = Product.create(
       name: Faker::Food.vegetables,
       stock: rand(1..12),
