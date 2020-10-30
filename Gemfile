@@ -36,7 +36,6 @@ gem 'faker'
 gem 'pundit'
 gem 'geocoder'
 
-
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
