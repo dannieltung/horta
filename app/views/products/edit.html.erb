@@ -1,10 +1,9 @@
-<h1>Product's Edit</h1>
-<%= link_to "Product's Index", products_path, class: 'btn btn-light btn-sm' %>
+<h1>Item Edit</h1>
 <div class="container">
   <%= simple_form_for [@user, @product] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :stock %>
-    <%= f.input :price %>
-    <%= f.submit class: 'btn btn-success' %>
+    <%= f.input :name, label: 'Item Name' %>
+    <%= f.input :stock, label: 'Availability' %>
+    <%= f.input :price, label: 'Price per Unit' %>
+    <%= f.submit 'Update', class: 'btn btn-success' %>
   <% end %>
 </div>

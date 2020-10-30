@@ -1,15 +1,16 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.where(user: current_user)
+    products = Product.where(user: current_user)
     # @products = policy_scope(Product).order(name: :asc)
+    @products = products.sort_by { |event| [event.name] }
   end
 
   def show
     @product = Product.find(params[:id])
     # authorize @product
-    @user = @product.user
-    # fiz isso para poder printar o email do usuário owner e o ror já entende que é pra localizar pelo id.
+    # @user = @product.user
+    # fiz isso para poder printar o email do usuario owner na view.
   end
 
   def new

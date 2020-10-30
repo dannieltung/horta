@@ -1,10 +1,9 @@
 <!-- <h1><= "#{current_user.email}" %> Product's Index</h1> -->
-<%= link_to 'Add a Product', new_product_path, class: "btn btn-primary btn-sm" %>
 <div class="container">
   <% @products.each do |product| %>
     <% if product.remove == false %>
       <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
-      <h4> available: <%= product.stock %> pieces </h4>
+      <h4> availability: <%= product.stock %> </h4>
       <h4> price: USD <%= product.price %>.00 </h4>
       <% if product.user == current_user %>
         <!-- < if product.user == current_user || current_user.admin > -->
@@ -12,5 +11,11 @@
       <% end %>
       <hr>
     <% end %>
+  <% end %>
+  <%= simple_form_for [Product.new] do |f| %>
+    <%= f.input :name, placeholder: 'Item Name', label: false %>
+    <%= f.input :stock, placeholder: 'Availability', label: false %>
+    <%= f.input :price, placeholder: 'Price per Unit', label: false %>
+    <%= f.submit "Add!", class: 'btn btn-success' %>
   <% end %>
 </div>
