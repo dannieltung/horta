@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
                   lat: @product.latitude,
                   lng: @product.longitude
     }]
+    # foreach itera sobre uma array não importa que seja uma array de apenas um objeto.
     # require 'pry-byebug'
     # binding.pry
   end

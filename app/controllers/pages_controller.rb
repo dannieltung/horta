@@ -16,5 +16,4 @@ class PagesController < ApplicationController
     # require 'pry-byebug'
     # binding.pry
   end
-  # tive problemas pois o @products é uma array ao invés de activerecord relation...e agora?
 end
