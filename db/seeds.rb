@@ -20,7 +20,7 @@ puts "Seeding Start..."
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: "user1@gmail.com",
-    password: "123456"
+    password: "password"
   )
   puts "User #{user.email} with id# #{user.id} created"
   puts "Seeding Products..."
@@ -61,7 +61,7 @@ end
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: "user2@gmail.com",
-    password: "123456"
+    password: "password"
   )
   puts "User #{user.email} with id# #{user.id} created"
   puts "Seeding Products..."
