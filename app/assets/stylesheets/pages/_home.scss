@@ -64,7 +64,9 @@ strong {
 }
 
 .trans_from {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .card-product {
