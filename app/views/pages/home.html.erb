@@ -9,8 +9,7 @@
 
       <div class="container_card">
 
-        <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class: "ima_tag", :alt => "rss feed") %>
-
+        <%= cl_image_tag product_image(product), crop: :fill, :alt => product.name %>
         <div class="container_cards_2">
 
           <div class="card_infos">

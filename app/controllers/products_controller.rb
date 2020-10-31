@@ -11,6 +11,12 @@ class ProductsController < ApplicationController
     # authorize @product
     # @user = @product.user
     # fiz isso para poder printar o email do usuario owner na view.
+    @markers = [{
+                  lat: @product.latitude,
+                  lng: @product.longitude
+    }]
+    # require 'pry-byebug'
+    # binding.pry
   end
 
   def new
@@ -63,6 +69,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :stock, :price, :address)
+    params.require(:product).permit(:name, :stock, :price, :address, :photo)
   end
 end
