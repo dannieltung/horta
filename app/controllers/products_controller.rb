@@ -66,7 +66,6 @@ class ProductsController < ApplicationController
     redirect_to root_path, notice: 'Product destroyed!'
   end
 
-
   private
 
   def product_params
