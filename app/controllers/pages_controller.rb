@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     end
     @products = products.sort_by { |event| [event.name] }
     activerecord = Product.where(id: @products.map(&:id))
-    @markers = activerecord.all.geocoded.map do |product|
+    @markers = activerecord.geocoded.map do |product|
       {
         lat: product.latitude,
         lng: product.longitude
