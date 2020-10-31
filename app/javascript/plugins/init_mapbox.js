@@ -17,18 +17,12 @@ const initMapbox = () => {
     });
     // primeiro cria se o mapa para em seguida criar os markers
     const markers = JSON.parse(mapElement.dataset.markers);
-    if (markers === Array) {
       markers.forEach((marker) => {
         new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
       });
-    } else {
-      new mapboxgl.Marker()
-          .setLngLat([ markers.lng, markers.lat ])
-          .addTo(map);
-    }
-    fitMapToMarkers(map, markers);
+  fitMapToMarkers(map, markers);
   }
 };
 
