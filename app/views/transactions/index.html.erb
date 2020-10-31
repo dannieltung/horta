@@ -1,12 +1,8 @@
-<% @transactions.each do |transaction| %>
-  <p> <%= link_to "Transaction id# #{transaction.id}", transaction_path(transaction) %> </p>
-  <p> product: <%= transaction.product.name %> </p>
-  <p> quantity: <%= transaction.quantity %> </p>
-  <p> created at: <%= transaction.created_at %> </p>
-  <hr>
-<% end %>
-<table style="width:100%">
+<table style="width:80%">
   <tr>
+    <th></th>
+    <th>Id#</th>
+    <th>Created At</th>
     <th>Item</th>
     <th>Quantity</th>
     <th>Price</th>
@@ -14,14 +10,19 @@
   </tr>
   <% @transactions.each do |transaction| %>
     <tr>
+      <td> <%= link_to "Delete", transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+      <td> <%= link_to transaction.id, transaction_path(transaction) %> </td>
+      <td> <%= transaction.created_at %> </td>
       <td> <%= transaction.product.name %> </td>
       <td> <%= transaction.quantity %> </td>
       <td> USD <%= transaction.product.price %>.00 </td>
       <td> USD <%= transaction.quantity * transaction.product.price %>.00 </td>
-      <td> <%= link_to "Delete", transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
     </tr>
   <% end %>
   <tr>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
