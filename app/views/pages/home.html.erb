@@ -11,34 +11,38 @@
 
         <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class: "ima_tag", :alt => "rss feed") %>
 
-        <div class="card_infos">
-          <h2><%= link_to product.name, product %></h2>
-          <p>USD <%= product.price %>.00</p>
-          <% if product.stock > 3 %>
-            <p> <%= "#{product.stock} available" %> </p>
-          <% else %>
-            <p><strong><%= "Only #{product.stock} available!" %></strong></p>
-          <% end %>
-          <% if product.user == current_user %>
-            <!-- < if product.user == current_user || current_user.admin > -->
-            <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
-            <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+        <div class="container_cards_2">
+
+          <div class="card_infos">
+            <h2><%= link_to product.name, product %></h2>
+            <p>USD <%= product.price %>.00</p>
+            <% if product.stock > 3 %>
+              <p> <%= "#{product.stock} available" %> </p>
+            <% else %>
+              <p><strong><%= "Only #{product.stock} available!" %></strong></p>
+            <% end %>
+
+            <% if product.user == current_user %>
+              <!-- < if product.user == current_user || current_user.admin > -->
+              <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
+              <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
+
+          <div class="trans_from">
+
+            <%= simple_form_for [Transaction.new] do |f| %>
+
+            <%= f.hidden_field :product_id, value: product.id %>
+
+              <%= f.input :quantity, placeholder: 'How many today?', label: false %>
+
+              <%= f.submit "Get It!", class: 'btn btn-success btn-sm' %>
+
+            <% end %>
+          </div>
+
         </div>
-
-        <div class="">
-
-          <%= simple_form_for [Transaction.new] do |f| %>
-
-          <%= f.hidden_field :product_id, value: product.id %>
-
-            <%= f.input :quantity, placeholder: 'How many today?', label: false %>
-
-            <%= f.submit "Get It!", class: 'btn btn-success btn-lg' %>
-
-          <% end %>
-        </div>
-
       </div>
   <% end %>
 
