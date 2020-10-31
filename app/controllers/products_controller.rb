@@ -57,12 +57,12 @@ class ProductsController < ApplicationController
     end
     # authorize @product
     @product.update(remove: true)
-    redirect_to root_path, notice: 'Product destroyed'
+    redirect_to root_path, notice: 'Product destroyed!'
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :stock, :price)
+    params.require(:product).permit(:name, :stock, :price, :address)
   end
 end
