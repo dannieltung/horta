@@ -1,6 +1,6 @@
 <!-- <= link_to 'Transaction Index', transactions_path > -->
 <!-- <h1>Root's View</h1> -->
-<div class="container">
+<div class="container-sm">
   <%= link_to 'Sell an Item!', new_product_path, class: "btn btn-primary btn-sm" %>
   <% @products.each do |product| %>
     <div>
@@ -19,13 +19,19 @@
             <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
             <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
-          <%= simple_form_for [Transaction.new] do |f| %>
-            <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.input :quantity, placeholder: 'How many today?', label: false %>
-            <%= f.submit "Get It!", class: 'btn btn-success btn-lg' %>
-          <% end %>
         </div>
       </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <%= simple_form_for [Transaction.new] do |f| %>
+      <%= f.hidden_field :product_id, value: product.id %>
+      <p>
+        <%= f.input :quantity, placeholder: 'How many today?', label: false %>
+      </p>
+      <p>
+        <%= f.submit "Get It!", class: 'btn btn-success btn-lg' %>
+      </p>
+      <% end %>
     </div>
   <% end %>
 </div>
