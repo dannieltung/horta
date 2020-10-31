@@ -18,6 +18,7 @@
       <td> <%= transaction.quantity %> </td>
       <td> USD <%= transaction.product.price %>.00 </td>
       <td> USD <%= transaction.quantity * transaction.product.price %>.00 </td>
+      <td> <%= link_to "Delete", transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
     </tr>
   <% end %>
   <tr>
