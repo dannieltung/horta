@@ -6,5 +6,13 @@ class PagesController < ApplicationController
       product.stock.positive? && product.remove == false
     end
     @products = products.sort_by { |event| [event.name] }
+    activerecord = Product.where(id: @products.map(&:id))
+    @markers = activerecord.all.geocoded.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude
+      }
+    end
   end
+  # tive problemas pois o @products é uma array ao invés de activerecord relation...e agora?
 end

@@ -14,21 +14,83 @@ Product.destroy_all
 puts "Destroying all users..."
 User.destroy_all
 
-puts "Seeding Users..."
-2.times do
+puts "Seeding Start..."
+1.times do
   user = User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email(domain: 'gmail.com'),
-    password: "123456"
+    email: "user1@gmail.com",
+    password: "password"
   )
   puts "User #{user.email} with id# #{user.id} created"
   puts "Seeding Products..."
-  5.times do
+  1.times do
     product = Product.create(
       name: Faker::Food.vegetables,
       stock: rand(1..12),
       price: rand(11..20),
+      address: "Avenida Paulista, 320 São Paulo",
+      user_id: user.id
+    )
+    puts "Product id# #{product.id} created."
+  end
+  1.times do
+    product = Product.create(
+      name: Faker::Food.vegetables,
+      stock: rand(1..12),
+      price: rand(11..20),
+      address: "Rua Frei Caneca, 569 São Paulo",
+      user_id: user.id
+    )
+    puts "Product id# #{product.id} created."
+  end
+  1.times do
+    product = Product.create(
+      name: Faker::Food.vegetables,
+      stock: rand(1..12),
+      price: rand(11..20),
+      address: "Rua Augusta, 2499 São Paulo",
+      user_id: user.id
+    )
+    puts "Product id# #{product.id} created."
+  end
+end
+
+1.times do
+  user = User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "user2@gmail.com",
+    password: "password"
+  )
+  puts "User #{user.email} with id# #{user.id} created"
+  puts "Seeding Products..."
+  1.times do
+    product = Product.create(
+      name: Faker::Food.vegetables,
+      stock: rand(1..12),
+      price: rand(11..20),
+      address: "Rua Augusta, 2860 São Paulo",
+      user_id: user.id
+    )
+    puts "Product id# #{product.id} created."
+  end
+  1.times do
+    product = Product.create(
+      name: Faker::Food.vegetables,
+      stock: rand(1..12),
+      price: rand(11..20),
+      address: "Rua São Bento, 293 São Paulo",
+      user_id: user.id
+    )
+    puts "Product id# #{product.id} created."
+  end
+  1.times do
+    product = Product.create(
+      name: Faker::Food.vegetables,
+      stock: rand(1..12),
+      price: rand(11..20),
+      address: "Avenida da Liberdade, 863 São Paulo",
       user_id: user.id
     )
     puts "Product id# #{product.id} created."
