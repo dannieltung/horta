@@ -31,6 +31,18 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    @transaction = Transaction.find(params[:id])
+    unless @transaction.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Delete 😠'
+    end
+    product = Product.find(@transaction.product_id)
+    before_stock = @transaction.quantity + product.stock
+    product.update(stock: before_stock)
+    @transaction.destroy
+    redirect_to transactions_path, notice: 'Transaction destroyed!'
+  end
+
   private
 
   def transaction_params
