@@ -1,41 +1,49 @@
 <!-- <= link_to 'Transaction Index', transactions_path > -->
 <!-- <h1>Root's View</h1> -->
-<div class="container-sm">
+
+<div class="container">
+
   <%= link_to 'Sell an Item!', new_product_path, class: "btn btn-primary btn-sm" %>
+
   <% @products.each do |product| %>
-    <div>
-      <div class=" d-flex card-product space-beteewn">
-        <div>
-          <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", :alt => "rss feed") %>
-          <div class="card-product-infos">
+
+      <div class="container_card">
+
+        <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", class: "ima_tag", :alt => "rss feed") %>
+
+        <div class="card_infos">
           <h2><%= link_to product.name, product %></h2>
-          <h4>USD <%= product.price %>.00</h4>
+          <p>USD <%= product.price %>.00</p>
           <% if product.stock > 3 %>
-            <h4> <%= "#{product.stock} available" %> </h4>
+            <p> <%= "#{product.stock} available" %> </p>
           <% else %>
-            <h4><strong><%= "Only #{product.stock} available!" %></strong></h4>
+            <p><strong><%= "Only #{product.stock} available!" %></strong></p>
           <% end %>
           <% if product.user == current_user %>
             <!-- < if product.user == current_user || current_user.admin > -->
             <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
             <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
-          </div>
         </div>
+
         <div class="">
+
           <%= simple_form_for [Transaction.new] do |f| %>
+
           <%= f.hidden_field :product_id, value: product.id %>
-          <p>
+
             <%= f.input :quantity, placeholder: 'How many today?', label: false %>
-          </p>
-          <p>
+
             <%= f.submit "Get It!", class: 'btn btn-success btn-lg' %>
-          </p>
+
           <% end %>
         </div>
+
       </div>
-    </div>
   <% end %>
+
+</div>
+
 <div id="map"
       style="width: 100%; height: 700px;"
       data-markers="<%= @markers.to_json %>"
