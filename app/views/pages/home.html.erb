@@ -5,7 +5,7 @@
   <% @products.each do |product| %>
     <div>
       <div class="card-product">
-        <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", :alt => "rss feed") %>
+        <%= cl_image_tag product_image(product), crop: :fill, :alt => product.name %>
         <div class="card-product-infos">
           <h2><%= link_to product.name, product %></h2>
           <h4>USD <%= product.price %>.00</h4>
