@@ -7,12 +7,14 @@ class PagesController < ApplicationController
     end
     @products = products.sort_by { |event| [event.name] }
     activerecord = Product.where(id: @products.map(&:id))
-    @markers = activerecord.all.geocoded.map do |product|
+    @markers = activerecord.geocoded.map do |product|
       {
         lat: product.latitude,
         lng: product.longitude
       }
     end
+    # require 'pry-byebug'
+    # binding.pry
   end
   # tive problemas pois o @products é uma array ao invés de activerecord relation...e agora?
 end
