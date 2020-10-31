@@ -35,6 +35,7 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'geocoder'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'pry-byebug'
