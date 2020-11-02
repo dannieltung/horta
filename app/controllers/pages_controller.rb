@@ -1,9 +1,17 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
+  # require 'pry-byebug'
+  # binding.pry
   def home
-    products = Product.all.select do |product|
-      product.stock.positive? && product.remove == false
+    if params[:query]
+      products = Product.all.select do |product|
+        product.name == params[:query] && product.stock.positive? && product.remove == false
+      end
+    else
+      products = Product.all.select do |product|
+        product.stock.positive? && product.remove == false
+      end
     end
     @products = products.sort_by { |event| [event.name] }
     activerecord = Product.where(id: @products.map(&:id))
@@ -13,7 +21,5 @@ class PagesController < ApplicationController
         lng: product.longitude
       }
     end
-    # require 'pry-byebug'
-    # binding.pry
   end
 end

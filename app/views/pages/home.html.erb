@@ -1,7 +1,10 @@
 <!-- <= link_to 'Transaction Index', transactions_path > -->
 <!-- <h1>Root's View</h1> -->
 <div class="container">
-  <%= link_to 'Sell an Item!', new_product_path, class: "btn btn-primary btn-sm" %>
+  <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Product" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
   <% @products.each do |product| %>
     <div class="container_card">
       <%= cl_image_tag product_image(product), class: "ima_tag", crop: :fill, :alt => product.name %>
