@@ -14,7 +14,8 @@ class PagesController < ApplicationController
       @markers = @products.geocoded.map do |product|
         {
           lat: product.latitude,
-          lng: product.longitude
+          lng: product.longitude,
+          infoWindow: render_to_string(partial: "products/info_window", locals: { product: product })
         }
       end
     else
@@ -23,7 +24,8 @@ class PagesController < ApplicationController
       @markers = activerecord.geocoded.map do |product|
         {
           lat: product.latitude,
-          lng: product.longitude
+          lng: product.longitude,
+          infoWindow: render_to_string(partial: "products/info_window", locals: { product: product })
         }
       end
     end
