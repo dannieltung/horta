@@ -9,4 +9,10 @@ class Product < ApplicationRecord
   # geocoder vai ser em cima do campos address. quando colocar endereço no campo address, vou pegar a latitude e longitude dele.
   after_validation :geocode, if: :will_save_change_to_address?
   # rodar o geocoder de novo se os dados do endereço foram alterados.
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_address,
+    against: [[:name, 'A'], [:address, 'B']],
+  using: {
+    tsearch: { prefix: true }
+  }
 end
