@@ -17,6 +17,7 @@
     <%= f.input :stock, placeholder: 'Availability', label: false %>
     <%= f.input :price, placeholder: 'Price per Unit', label: false %>
     <%= f.input :address, placeholder: 'Item Location', label: false %>
+    <%= f.input :photo, as: :file, label: 'Photo' %>
     <%= f.submit "Add!", class: 'btn btn-success' %>
   <% end %>
 </div>
