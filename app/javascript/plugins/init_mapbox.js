@@ -6,6 +6,17 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 2000 }); // duration em mileseconds
 };
 
+const addMarkersToMap = (map, markers) => {
+  markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+
+    new mapboxgl.Marker()
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup) // add this
+      .addTo(map);
+  });
+};
+
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
   // vai buscar a div.map ou podemos colocar apenas map se for uma id unica.
@@ -17,11 +28,13 @@ const initMapbox = () => {
     });
     // primeiro cria se o mapa para em seguida criar os markers
     const markers = JSON.parse(mapElement.dataset.markers);
-      markers.forEach((marker) => {
-        new mapboxgl.Marker()
-          .setLngLat([ marker.lng, marker.lat ])
-          .addTo(map);
-      });
+      // markers.forEach((marker) => {
+      //   new mapboxgl.Marker()
+      //     .setLngLat([ marker.lng, marker.lat ])
+      //     .addTo(map);
+      // });
+      // a linha abaixo esta substituindo todo o código acima comentado.
+  addMarkersToMap(map, markers);
   fitMapToMarkers(map, markers);
   }
 };
