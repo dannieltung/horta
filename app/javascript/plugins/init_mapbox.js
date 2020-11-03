@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -26,6 +27,8 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                          mapboxgl: mapboxgl }));
     // primeiro cria se o mapa para em seguida criar os markers
     const markers = JSON.parse(mapElement.dataset.markers);
       // markers.forEach((marker) => {
