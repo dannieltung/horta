@@ -15,7 +15,7 @@ class PagesController < ApplicationController
         {
           lat: product.latitude,
           lng: product.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { flat: flat })
+          infoWindow: render_to_string(partial: "products/info_window", locals: { product: product })
         }
       end
     else
