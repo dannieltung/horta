@@ -1,6 +1,16 @@
 class TransactionsController < ApplicationController
   def index
     @transactions = Transaction.where(user: current_user)
+    @alltransactions = Transaction.all
+    @my_sold_transactions = []
+    @alltransactions.each do |alltransaction|
+      if Product.find(alltransaction.product_id).user == current_user
+        @my_sold_transactions << alltransaction
+      end
+    end
+    # @activerecord_my_sold_transactions = Product.where(id: @my_sold_transactions.map(&:id))
+
+    # raise
   end
 
   def show
