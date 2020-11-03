@@ -37,6 +37,6 @@
   <hr>
   <p>Item vendido: <%= my_sold_transaction.product_id %></p>
   <p>Qtdd vendida: <%= my_sold_transaction.quantity %></p>
-  <p>Comprador: <%= my_sold_transaction.user_id %></p>
+  <p>Comprador: <%= my_sold_transaction.user.first_name %></p>
   <p>Criado: <%= my_sold_transaction.created_at %></p>
 <% end %>
