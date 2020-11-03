@@ -35,7 +35,7 @@
 </table>
 <% @my_sold_transactions.each do |my_sold_transaction| %>
   <hr>
-  <p>Item vendido: <%= my_sold_transaction.product_id %></p>
+  <p>Item vendido: <%= my_sold_transaction.product.name %></p>
   <p>Qtdd vendida: <%= my_sold_transaction.quantity %></p>
   <p>Comprador: <%= my_sold_transaction.user.first_name %></p>
   <p>Criado: <%= my_sold_transaction.created_at %></p>
