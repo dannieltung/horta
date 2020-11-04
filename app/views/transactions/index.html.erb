@@ -10,7 +10,7 @@
   </tr>
   <% @transactions.each do |transaction| %>
     <tr>
-      <td> <%= link_to "Delete", transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+      <td> <%= link_to (content_tag(:i,'Delete', class: "fas fa-trash")), transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
       <td> <%= link_to transaction.id, transaction_path(transaction) %> </td>
       <td> <%= transaction.created_at %> </td>
       <td> <%= transaction.product.name %> </td>
