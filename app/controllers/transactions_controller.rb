@@ -10,7 +10,8 @@ class TransactionsController < ApplicationController
     end
 
     # raise
-    # Product.joins(:transactions).where(user: danniel)
+
+    # Product.joins(:transactions).where(user: current_user)
   end
 
   def show
