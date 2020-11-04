@@ -3,7 +3,10 @@
 <div class="container">
   <%= form_tag root_path, method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Product" %>
-    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+    <!-- <= submit_tag "Search", class: "btn btn-outline-primary" %> -->
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-search"></i> Search
+    </button>
     <!-- class: "fas fa-search" -->
   <% end %>
   <% @products.each do |product| %>
@@ -27,8 +30,12 @@
 
             <% if product.user == current_user %>
               <!-- < if product.user == current_user || current_user.admin > -->
-              <%= link_to (content_tag(:i, 'Edit', class: "fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
+              <%= link_to (content_tag(:i, 'Edit', class: "k fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
               <!-- class: 'btn btn-outline-warning' -->
+              <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <div class="btn btn-outline-danger btn-sm"><i class="fas fa-cogs"></i>
+                </div>
+              <% end %>
 
               <%= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
               <!-- class="btn btn-danger" -->
@@ -48,7 +55,7 @@
     </div>
   <% end %>
 </div>
-<div id="map"
+<div class="container" id="map"
       style="width: 100%; height: 700px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
