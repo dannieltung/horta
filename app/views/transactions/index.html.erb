@@ -1,4 +1,4 @@
-<table style="width:80%">
+<table class="trans_total" style="width:80%">
   <tr>
     <th></th>
     <th>Id#</th>
@@ -10,7 +10,10 @@
   </tr>
   <% @transactions.each do |transaction| %>
     <tr>
-      <td> <%= link_to (content_tag(:i,'Delete', class: "fas fa-trash")), transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+      <td> <%= link_to transaction_path(transaction) do %>
+              <div class="btn btn-danger btn-sm"> Delete <i class="fas fa-trash"></i>
+              </div>
+            <% end %></td>
       <td> <%= link_to transaction.id, transaction_path(transaction) %> </td>
       <td> <%= transaction.created_at %> </td>
       <td> <%= transaction.product.name %> </td>
