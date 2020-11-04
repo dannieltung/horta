@@ -11,5 +11,16 @@ class UsersController < ApplicationController
     unless @user == current_user
       redirect_to root_path, notice: 'Not your account! 😠'
     end
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Info updated!👍'
+    else
+      render :show
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :delivery_address)
   end
 end
