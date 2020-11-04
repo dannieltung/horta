@@ -8,9 +8,10 @@ class TransactionsController < ApplicationController
         @my_sold_transactions << alltransaction
       end
     end
-    # @activerecord_my_sold_transactions = Product.where(id: @my_sold_transactions.map(&:id))
 
     # raise
+
+    # Product.joins(:transactions).where(user: current_user)
   end
 
   def show
