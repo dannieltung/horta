@@ -1,13 +1,37 @@
-.card_edit {
-  background-color: #b8de6f !important;
-  height: 50px;
+.edit_all {
+  background-color: white;
+  padding: 0px 0px 8px 8px;
 }
-.card_edit{
-  // background-color: white;
-  background-color: #f1e189 !important;
+
+.edit_head h1 {
+  font-family: 'Roboto';
+  border: 2px solid lightgray;
+  border-style: groove;
   height: 100%;
   margin: 10px;
+  padding-top: 0px 0px 8px 8px;
   padding-left: 8px;
   padding-right: 8px;
+  border-radius: 4px
+}
+
+.edit_card{
+  font-family: 'Roboto';
+  border: 2px solid lightgray;
+  border-style: groove;
+  height: 100%;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 4px
+}
+
+.edit_confirm {
+  font-family: 'Roboto';
+  border: 2px solid lightgray;
+  border-style: groove;
+  height: 100%;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 4px
 }
 

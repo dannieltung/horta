@@ -1,13 +1,17 @@
-<div class="card_edit">
-  <h1 class="">Item Edit</h1>
-  <div class="card_infos">
-  <%= simple_form_for [@user, @product] do |f| %>
-    <%= f.input :name, label: 'Item Name' %>
-    <%= f.input :stock, label: 'Availability' %>
-    <%= f.input :price, label: 'Price per Unit' %>
-    <%= f.input :address, label: 'Item Location' %>
-    <%= f.input :photo, as: :file, label: 'Photo' %>
-    <%= f.submit 'Update', class: 'btn btn-success' %>
+<div class="edit_all">
+  <div class="edit_head">
+    <h1 class="">Item Edit</h1>
   </div>
-  <% end %>
+    <div class="edit_card">
+      <%= simple_form_for [@user, @product] do |f| %>
+        <%= f.input :name, label: 'Item Name' %>
+        <%= f.input :stock, label: 'Availability' %>
+        <%= f.input :price, label: 'Price per Unit' %>
+        <%= f.input :address, label: 'Item Location' %>
+    </div>
+    <div class="edit_confirm">
+        <%= f.input :photo, as: :file, label: 'Photo 📷' %>
+        <%= f.submit 'Update⚙️', class: 'btn btn-success' %>
+      <% end %>
+    </div>
 </div>
