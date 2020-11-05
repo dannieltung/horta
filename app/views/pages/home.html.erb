@@ -10,43 +10,35 @@
     <!-- class: "fas fa-search" -->
   <% end %>
   <% @products.each do |product| %>
-
-      <div class="container_card">
-
-        <%= link_to(product) do %>
-          <%= cl_image_tag product_image(product), class: "ima_tag", crop: :fill, :alt => product.name %>
-        <% end %>
-
-        <div class="container_cards_2">
-
-          <div class="card_infos">
-            <h2><%= link_to product.name, product %></h2>
-            <p>USD <%= product.price %>.00</p>
-            <% if product.stock > 3 %>
-              <p> <%= "#{product.stock} available" %> </p>
-            <% else %>
-              <p><strong><%= "Only #{product.stock} available!" %></strong></p>
+    <div class="container_card">
+      <%= link_to(product) do %>
+        <%= cl_image_tag product_image(product), class: "ima_tag", crop: :fill, :alt => product.name %>
+      <% end %>
+      <div class="container_cards_2">
+        <div class="card_infos">
+          <h2><%= link_to product.name, product %></h2>
+          <p>USD <%= product.price %>.00</p>
+          <% if product.stock > 3 %>
+            <p> <%= "#{product.stock} available" %> </p>
+          <% else %>
+            <p><strong><%= "Only #{product.stock} available!" %></strong></p>
+          <% end %>
+          <% if product.user == current_user %>
+            <!-- < if product.user == current_user || current_user.admin > -->
+            <%= link_to (content_tag(:i, 'Edit', class: "k fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
+            <!-- class: 'btn btn-outline-warning' -->
+            <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <div class="btn btn-outline-danger btn-sm"><i class="fas fa-cogs"></i>
+              </div>
             <% end %>
-
-            <% if product.user == current_user %>
-              <!-- < if product.user == current_user || current_user.admin > -->
-              <%= link_to (content_tag(:i, 'Edit', class: "k fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %>
-              <!-- class: 'btn btn-outline-warning' -->
-              <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <div class="btn btn-outline-danger btn-sm"><i class="fas fa-cogs"></i>
-                </div>
-              <% end %>
-
-              <%= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
-              <!-- class="btn btn-danger" -->
-
-            <% end %>
-          </div>
-
-          <div class="trans_from">
-
-            <%= simple_form_for [Transaction.new] do |f| %>
+            <%= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
+            <!-- class="btn btn-danger" -->
+          <% end %>
+        </div>
+        <div class="trans_from">
+          <%= simple_form_for [Transaction.new] do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
+            <%= f.input :book, as: :date, html5: true, label: false %>
             <%= f.input :quantity, placeholder: 'How many today?', label: false %>
             <%= f.submit "Get It!", class: 'btn btn-success btn-sm' %>
           <% end %>
