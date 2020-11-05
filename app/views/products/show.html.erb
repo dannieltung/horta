@@ -14,13 +14,14 @@
 <% end %>
 <% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
   <%= simple_form_for [@product, @review] do |f| %>
-    <%= f.input :content, placeholder: 'Your Review', label: false %>
+    <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
     <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
     <%= f.submit "Review it!", class: 'btn btn-success' %>
   <% end %>
 <% end %>
 <% @reviews.each do |review|%>
   <p><%= review.content %></p>
+  <hr>
 <% end %>
 <div id="map"
      style="width: 100%; height: 700px;"
