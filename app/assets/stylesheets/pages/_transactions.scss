@@ -27,7 +27,20 @@ tr:nth-child(even) {background-color: #e6e6ff;}
 }
 
 .buy {
-  background-color: blue;
+  font-family: 'Roboto';
+  width: 890px;
+  border-radius: 8px;
+}
+.buy_info {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  background-color: rgba(0, 149, 255, 0.2);
+}
+.buy_info p {
+  font-family: 'Roboto';
+  margin-bottom: 4px;
+  padding-left: 16px;
 }
 
 
