@@ -1,0 +1,36 @@
+class ReviewsController < ApplicationController
+
+  def new
+    @product = Product.find(params[:product_id])
+    @review = Review.new
+  end
+
+  def create
+    @product = Product.find(params[:product_id])
+    @review = Review.new(review_params)
+    @review.product = @product
+    @transactions = Transaction.where(user: current_user, product_id: @review.product)
+    raise
+    if @review.save
+      redirect_to product_path(@review.product_id), notice: 'Thanks for Reviewing'
+    else
+      render :index
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    unless @review.user == current_user
+      redirect_to root_path, notice: 'Not allowed to Delete 😩'
+    end
+    @review.destroy
+    redirect_to product_path(@review.product_id), notice: 'Review Destroyed!'
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:content, :rating)
+  end
+
+end
