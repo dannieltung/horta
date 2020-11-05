@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = Review.new(review_params)
     @review.product = @product
+    @review.user = current_user
     if Transaction.where(user: current_user, product_id: @review.product_id).empty?
       redirect_to root_path, notice: 'Not allowed to review this product.'
     end
