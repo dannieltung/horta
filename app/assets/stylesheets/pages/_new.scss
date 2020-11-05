@@ -1,23 +1,23 @@
-.edit_all {
+.new_all {
   background-color: white;
   padding-top: 8px;
   padding-bottom: 8px;
   box-shadow: 0px 0px 8px 8px #0000001c;
 }
 
-.edit_head h1 {
+.new_head h1 {
   font-family: 'Roboto';
   border: 2px solid lightgray;
   border-style: groove;
   height: 100%;
   margin: 10px;
-  padding-top: 0px 0px 8px 8px;
+  padding: 0px 0px 8px 8px;
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 4px
 }
 
-.edit_card{
+.new_card{
   font-family: 'Roboto';
   border: 2px solid lightgray;
   border-style: groove;
@@ -27,7 +27,7 @@
   border-radius: 4px
 }
 
-.edit_confirm {
+.new_confirm {
   font-family: 'Roboto';
   border: 2px solid lightgray;
   border-style: groove;
@@ -37,7 +37,7 @@
   border-radius: 4px
 }
 
-.edit_home {
+.new_home {
   padding-left: 8px;
 }
 

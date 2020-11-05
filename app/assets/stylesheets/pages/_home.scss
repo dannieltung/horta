@@ -42,9 +42,6 @@ strong {
 
 .card_infos{
   margin-left: 24px;
-  .k {
-    // font-family: "helvetica";
-  }
 }
 
 .card_infos h2 {
@@ -60,9 +57,9 @@ strong {
 }
 
 .container_cards_2 {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .card_infos p {
@@ -79,4 +76,9 @@ strong {
   justify-content: space-around;
   padding-right: 12px;
 }
+
+// #map {
+//   height: 100%;
+//   width: 120px;
+// }
 
