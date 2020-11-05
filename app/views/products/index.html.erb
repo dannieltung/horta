@@ -1,7 +1,17 @@
 <!-- <h1><= "#{current_user.email}" %> Product's Index</h1> -->
-<div class="container">
+  <div>
+    <%= link_to root_path do %>
+      <div class="btn btn-success"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg>
+      </div>
+    <% end %>
+  </div>
+<div class="index_container">
   <% @products.each do |product| %>
     <% if product.remove == false %>
+    <div class="index_items">
       <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
       <h4> availability: <%= product.stock %> </h4>
       <h4> price: USD <%= product.price %>.00 </h4>
@@ -13,15 +23,18 @@
           </div>
         <% end %>
       <% end %>
+    </div>
       <hr>
     <% end %>
   <% end %>
-  <%= simple_form_for [Product.new] do |f| %>
-    <%= f.input :name, placeholder: 'Item Name', label: false %>
-    <%= f.input :stock, placeholder: 'Availability', label: false %>
-    <%= f.input :price, placeholder: 'Price per Unit', label: false %>
-    <%= f.input :address, placeholder: 'Item Location', label: false %>
-    <%= f.input :photo, as: :file, label: 'Photo' %>
-    <%= f.submit "Add!", class: 'btn btn-success' %>
-  <% end %>
+  <div class="index_new">
+    <%= simple_form_for [Product.new] do |f| %>
+      <%= f.input :name, placeholder: 'Item Name', label: false %>
+      <%= f.input :stock, placeholder: 'Availability', label: false %>
+      <%= f.input :price, placeholder: 'Price per Unit', label: false %>
+      <%= f.input :address, placeholder: 'Item Location', label: false %>
+      <%= f.input :photo, as: :file, label: 'Photo' %>
+      <%= f.submit "Add!✔️", class: 'btn btn-success' %>
+    <% end %>
+  </div>
 </div>

@@ -38,10 +38,15 @@
     <td><strong>Total</strong> USD <%= grand_total %>.00 </td>
   </tr>
 </table>
-<% @my_sold_transactions.each do |my_sold_transaction| %>
-  <hr>
-  <p>Item vendido: <%= my_sold_transaction.product.name %></p>
-  <p>Qtdd vendida: <%= my_sold_transaction.quantity %></p>
-  <p>Comprador: <%= my_sold_transaction.user.first_name %></p>
-  <p>Criado: <%= my_sold_transaction.created_at %></p>
+  <div class="buy">
+  <% @my_sold_transactions.each do |my_sold_transaction| %>
+    <hr>
+    <div class="buy_info">
+      <p>Item sold: <%= my_sold_transaction.product.name %></p>
+      <p>Quantity bought: <%= my_sold_transaction.quantity %></p>
+      <p>Seler: <%= my_sold_transaction.user.first_name %></p>
+      <p>Date created: <%= my_sold_transaction.created_at %></p>
+    </div>
+    <hr>
+  </div>
 <% end %>
