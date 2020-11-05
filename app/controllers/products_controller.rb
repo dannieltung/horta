@@ -7,7 +7,10 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    # @transactions = Transaction.all
     @product = Product.find(params[:id])
+    @reviews = Review.where(product_id: @product)
     # authorize @product
     # @user = @product.user
     # fiz isso para poder printar o email do usuario owner na view.

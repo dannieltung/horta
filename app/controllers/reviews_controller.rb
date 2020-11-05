@@ -1,18 +1,21 @@
 class ReviewsController < ApplicationController
 
-  def new
-    @product = Product.find(params[:product_id])
-    @review = Review.new
-  end
+  # def new
+  #   @product = Product.find(params[:product_id])
+  #   @review = Review.new
+  # end
 
   def create
     @product = Product.find(params[:product_id])
     @review = Review.new(review_params)
     @review.product = @product
-    @transactions = Transaction.where(user: current_user, product_id: @review.product)
-    raise
+    if Transaction.where(user: current_user, product_id: @review.product_id).empty?
+      redirect_to root_path, notice: 'Not allowed to review this product.'
+    end
+
+    # raise
     if @review.save
-      redirect_to product_path(@review.product_id), notice: 'Thanks for Reviewing'
+      redirect_to product_path(@product), notice: 'Thanks for Reviewing'
     else
       render :index
     end
