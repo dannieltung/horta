@@ -25,7 +25,7 @@
             <p>USD <%= product.price %>.00</p>
             <% if product.stock > 3 %>
               <p> <%= "#{product.stock} available" %> </p>
-            <% else %>
+              <% else %>
               <p><strong><%= "Only #{product.stock} available!" %></strong></p>
             <% end %>
 
@@ -44,12 +44,8 @@
                 <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
                 </div>
               <% end %>
-
-              <!-- class="btn btn-danger" -->
             <% end %>
-            <%= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
             <!-- class="btn btn-danger" -->
-          <% end %>
         </div>
         <div class="trans_from">
           <%= simple_form_for [Transaction.new] do |f| %>
