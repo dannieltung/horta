@@ -1,0 +1,29 @@
+.index_container {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px 4px #0000001c;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 8px;
+}
+
+.index_items {
+  border: 2px solid lightgray;
+  border-style: groove;
+  height: 100%;
+  margin: 4px;
+  padding: 8px;
+  border-radius: 4px
+}
+
+.index_items h2, h4{
+  font-family: 'Roboto';
+}
+
+.index_new {
+  background-color: lightgray;
+  height: 100%;
+  margin: 4px;
+  padding: 8px;
+  border-radius: 4px
+}

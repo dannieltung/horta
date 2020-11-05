@@ -1,7 +1,8 @@
 <!-- <h1><= "#{current_user.email}" %> Product's Index</h1> -->
-<div class="container">
+<div class="index_container">
   <% @products.each do |product| %>
     <% if product.remove == false %>
+    <div class="index_items">
       <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
       <h4> availability: <%= product.stock %> </h4>
       <h4> price: USD <%= product.price %>.00 </h4>
@@ -13,15 +14,18 @@
           </div>
         <% end %>
       <% end %>
+    </div>
       <hr>
     <% end %>
   <% end %>
-  <%= simple_form_for [Product.new] do |f| %>
-    <%= f.input :name, placeholder: 'Item Name', label: false %>
-    <%= f.input :stock, placeholder: 'Availability', label: false %>
-    <%= f.input :price, placeholder: 'Price per Unit', label: false %>
-    <%= f.input :address, placeholder: 'Item Location', label: false %>
-    <%= f.input :photo, as: :file, label: 'Photo' %>
-    <%= f.submit "Add!", class: 'btn btn-success' %>
-  <% end %>
+  <div class="index_new">
+    <%= simple_form_for [Product.new] do |f| %>
+      <%= f.input :name, placeholder: 'Item Name', label: false %>
+      <%= f.input :stock, placeholder: 'Availability', label: false %>
+      <%= f.input :price, placeholder: 'Price per Unit', label: false %>
+      <%= f.input :address, placeholder: 'Item Location', label: false %>
+      <%= f.input :photo, as: :file, label: 'Photo' %>
+      <%= f.submit "Add!✔️", class: 'btn btn-success' %>
+    <% end %>
+  </div>
 </div>
