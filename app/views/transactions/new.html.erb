@@ -3,6 +3,7 @@
   <%= simple_form_for [@user, @transaction] do |f| %>
     <%= f.association :product %>
     <%= f.input :quantity %>
+    <%= f.input :book, as: :date, html5: true %>
     <%= f.submit class: 'btn btn-success' %>
   <% end %>
 </div>

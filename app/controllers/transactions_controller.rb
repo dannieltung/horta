@@ -20,9 +20,9 @@ class TransactionsController < ApplicationController
     @product = @transaction.product
   end
 
-  # def new
-  #   @transaction = Transaction.new
-  # end
+  def new
+    @transaction = Transaction.new
+  end
 
   def create
     @transaction = Transaction.new(transaction_params)
@@ -57,6 +57,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:quantity, :product_id)
+    params.require(:transaction).permit(:quantity, :product_id, :book)
   end
 end
