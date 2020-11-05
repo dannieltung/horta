@@ -19,10 +19,9 @@ strong {
 
 .ima_tag {
   height: 100%;
-  width: 120px;
+  width: 180px;
   border-radius: 4px;
   object-fit: cover;
-
     &:hover {
       transform: scale(1.2);
       transition: transform .3s;
@@ -45,8 +44,8 @@ strong {
 }
 
 .card_infos h2 {
-  // font-family: "helvetica";
-  font-size: 16px;
+  font-family: 'Roboto';
+  font-size: 36px;
   font-weight: bold;
   margin: 0;
 
@@ -56,18 +55,22 @@ strong {
   }
 }
 
+.card_infos p {
+  font-family: 'Roboto';
+  font-size: 20px;
+  line-height: 1.4;
+  opacity: .8;
+  margin-bottom: 0;
+}
+
+.buttons_1 {
+  padding-top: 36px;
+}
+
 .container_cards_2 {
   display: flex;
   width: 100%;
   justify-content: space-between;
-}
-
-.card_infos p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .8;
-  margin-bottom: 0;
-  margin-top: 8px;
 }
 
 .trans_from {
