@@ -8,9 +8,10 @@ class TransactionsController < ApplicationController
         @my_sold_transactions << alltransaction
       end
     end
-    # @activerecord_my_sold_transactions = Product.where(id: @my_sold_transactions.map(&:id))
 
     # raise
+
+    # Product.joins(:transactions).where(user: current_user)
   end
 
   def show
@@ -19,9 +20,9 @@ class TransactionsController < ApplicationController
     @product = @transaction.product
   end
 
-  # def new
-  #   @transaction = Transaction.new
-  # end
+  def new
+    @transaction = Transaction.new
+  end
 
   def create
     @transaction = Transaction.new(transaction_params)
@@ -56,6 +57,6 @@ class TransactionsController < ApplicationController
   private
 
   def transaction_params
-    params.require(:transaction).permit(:quantity, :product_id)
+    params.require(:transaction).permit(:quantity, :product_id, :book)
   end
 end

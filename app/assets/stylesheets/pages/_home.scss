@@ -20,25 +20,32 @@ strong {
 .ima_tag {
   height: 100%;
   width: 120px;
+  border-radius: 4px;
   object-fit: cover;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform .3s;
+    }
 }
 
 .container_card {
   background-color: white;
-  height: 120px;
-  border-radius: 5px;
-  box-shadow: 7px 5px 7px 3px #0000001c;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
+  height: 180px;
+  border-radius: 4px;
+  box-shadow: 8px 4px 8px 4px #0000001c;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding: 4px;
   display: flex;
 }
 
 .card_infos{
-  margin-left: 20px;
+  margin-left: 24px;
 }
 
 .card_infos h2 {
+  // font-family: "helvetica";
   font-size: 16px;
   font-weight: bold;
   margin: 0;
@@ -50,15 +57,15 @@ strong {
 }
 
 .container_cards_2 {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .card_infos p {
   font-size: 12px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: .8;
   margin-bottom: 0;
   margin-top: 8px;
 }
@@ -67,12 +74,11 @@ strong {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-right: 12px;
 }
 
-.btn_delete {
-  color: red;
-}
-.fas fa-trash {
-
-}
+// #map {
+//   height: 100%;
+//   width: 120px;
+// }
 
