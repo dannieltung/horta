@@ -1,16 +1,14 @@
 <!-- <p id="notice"><%= notice %></p> -->
-  <%= link_to root_path do %>
-    <div class="btn btn-success"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-      </svg>
-    </div>
-  <% end %>
-
+<%= link_to root_path do %>
+  <div class="btn btn-success"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+      <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+    </svg>
+  </div>
+<% end %>
 <% if @product.user == current_user %>
   <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
 <% end %>
-
 <div class="show_card">
   <h1> <%= @product.name %> </h1>
   <p> availability: <%= @product.stock %> </p>
@@ -18,11 +16,9 @@
   <p> location: <%= @product.address %> </p>
   <p> <%= cl_image_tag product_image(@product), witdh: 200, height: 200, :alt => @product.name %></p>
 </div>
-
 <div class="show_btn">
   <% if @product.user == current_user %>
     <!-- < if @product.user == current_user || current_user.admin > -->
-
     <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
     <%= link_to edit_product_path(@product) do %>
       <div class="btn btn-outline-warning btn-sm"> Edit <i class="fas fa-edit"></i>
@@ -35,7 +31,18 @@
     <% end %>
   <% end %>
 </div>
-
+<% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
+  <%= simple_form_for [@product, @review] do |f| %>
+    <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
+    <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
+    <%= f.submit "Review it!", class: 'btn btn-success' %>
+  <% end %>
+<% end %>
+<% @product.reviews.each do |review|%>
+  <p><%= review.content %></p>
+  <p><%= '🌟' * review.rating %></p>
+  <hr>
+<% end %>
 <div id="map"
      style="width: 100%; height: 700px;"
      data-markers="<%= @markers.to_json %>"

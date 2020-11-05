@@ -7,10 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @product = Product.find(params[:id])
-    # authorize @product
-    # @user = @product.user
-    # fiz isso para poder printar o email do usuario owner na view.
     @markers = [{
                   lat: @product.latitude,
                   lng: @product.longitude
@@ -22,12 +20,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    # authorize @product
   end
 
   def create
     @product = Product.new(product_params)
-    # authorize @product
     @product.user = current_user
     if @product.save
       redirect_to product_path(@product), notice: 'Product created!'
@@ -41,7 +37,6 @@ class ProductsController < ApplicationController
     unless @product.user == current_user
       redirect_to root_path, notice: 'Not allowed to Edit 😥'
     end
-    # authorize @product
   end
 
   def update
