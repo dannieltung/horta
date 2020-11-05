@@ -19,8 +19,9 @@
     <%= f.submit "Review it!", class: 'btn btn-success' %>
   <% end %>
 <% end %>
-<% @reviews.each do |review|%>
+<% @product.reviews.each do |review|%>
   <p><%= review.content %></p>
+  <p><%= review.rating %></p>
   <hr>
 <% end %>
 <div id="map"
