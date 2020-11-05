@@ -52,8 +52,8 @@
         <div class="trans_from">
           <%= simple_form_for [Transaction.new] do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.input :book, as: :date, html5: true, label: false %>
-            <%= f.input :quantity, placeholder: 'How many today?', label: false %>
+            <%= f.input :book, as: :datetime, html5: true, label: "Arrange:" %>
+            <%= f.input :quantity, placeholder: 'How many?', label: false %>
             <%= f.submit "Get It!", class: 'btn btn-success btn-sm' %>
           <% end %>
         </div>
