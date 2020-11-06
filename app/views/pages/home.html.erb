@@ -11,7 +11,6 @@
   <% end %>
   <% @products.each do |product| %>
 
-
       <div class="container_card">
 
         <%= link_to(product) do %>
@@ -45,14 +44,15 @@
                   <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
                   </div>
                 <% end %>
+            <!-- class="btn btn-danger" -->
+                <!-- <= image_tag("stuff/fruit.png") %> -->
               </div>
             <% end %>
-            <!-- class="btn btn-danger" -->
         </div>
         <div class="trans_from">
           <%= simple_form_for [Transaction.new] do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.input :book, as: :datetime, html5: true, label: "Arrange:" %>
+            <%= f.input :book, as: :datetime, html5: true, label: false %>
             <%= f.input :quantity, placeholder: 'How many?', label: false %>
             <%= f.submit "Get It!", class: 'btn btn-success btn-sm' %>
           <% end %>

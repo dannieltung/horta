@@ -6,6 +6,7 @@
     </svg>
   </div>
 <% end %>
+
 <% if @product.user == current_user %>
   <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
 <% end %>
@@ -31,15 +32,10 @@
         <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
         </div>
       <% end %>
-
-<div class="show_btn">
+  <% end %>
   <% if @product.user == current_user %>
     <!-- < if @product.user == current_user || current_user.admin > -->
     <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
-    <%= link_to edit_product_path(@product) do %>
-      <div class="btn btn-outline-warning btn-sm"> Edit <i class="fas fa-edit"></i>
-
-      </div>
   <% end %>
 </div>
 <% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
