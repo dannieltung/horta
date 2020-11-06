@@ -6,22 +6,20 @@
     </svg>
   </div>
 <% end %>
-
 <% if @product.user == current_user %>
   <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
 <% end %>
-<div class="show_card">
-  <h1> <%= @product.name %> </h1>
-  <p> availability: <%= @product.stock %> </p>
-  <p> price: USD <%= @product.price %>.00 </p>
-  <p> location: <%= @product.address %> </p>
-  <p> <%= cl_image_tag product_image(@product), witdh: 200, height: 200, :alt => @product.name %></p>
-</div>
-
+<div class="container">
+  <div class="show_card">
+    <h1> <%= @product.name %> </h1>
+    <p> availability: <%= @product.stock %> </p>
+    <p> price: USD <%= @product.price %>.00 </p>
+    <p> location: <%= @product.address %> </p>
+    <p> <%= cl_image_tag product_image(@product), witdh: 200, height: 200, :alt => @product.name %></p>
+  </div>
   <% if @product.user == current_user %>
     <div class="show_btn">
       <!-- < if @product.user == current_user || current_user.admin > -->
-
       <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
       <%= link_to edit_product_path(@product) do %>
         <div class="btn btn-outline-warning btn-sm"> Edit <i class="fas fa-edit"></i>
@@ -32,27 +30,28 @@
         <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
         </div>
       <% end %>
+    </div>
   <% end %>
-  <% if @product.user == current_user %>
-    <!-- < if @product.user == current_user || current_user.admin > -->
-    <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
+  <!-- < if @product.user == current_user > -->
+  <!-- < if @product.user == current_user || current_user.admin > -->
+  <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
+  <!-- < end > -->
+  <% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
+    <%= simple_form_for [@product, @review] do |f| %>
+      <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
+      <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
+      <%= f.submit "Review it!", class: 'btn btn-success' %>
+    <% end %>
   <% end %>
-</div>
-<% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
-  <%= simple_form_for [@product, @review] do |f| %>
-    <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
-    <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
-    <%= f.submit "Review it!", class: 'btn btn-success' %>
+  <% @product.reviews.each do |review|%>
+    <p><%= review.content %></p>
+    <p><%= '🌟' * review.rating %></p>
+    <%= review.user.first_name %>
+    <hr>
   <% end %>
-<% end %>
-<% @product.reviews.each do |review|%>
-  <p><%= review.content %></p>
-  <p><%= '🌟' * review.rating %></p>
-  <%= review.user.first_name %>
-  <hr>
-<% end %>
-<div id="map"
-     style="width: 100%; height: 700px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map"
+       style="width: 100%; height: 700px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
