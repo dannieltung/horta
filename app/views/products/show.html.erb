@@ -46,7 +46,8 @@
   <% @product.reviews.each do |review|%>
     <p><%= review.content %></p>
     <p><%= '🌟' * review.rating %></p>
-    <%= review.user.first_name %>
+    <p><%= review.user.first_name %></p>
+    <p><%= Transaction.where(user: current_user, product_id: @product.id).last.created_at %></p>
     <hr>
   <% end %>
   <div id="map"
