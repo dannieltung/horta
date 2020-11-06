@@ -36,7 +36,7 @@
   <!-- < if @product.user == current_user || current_user.admin > -->
   <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
   <!-- < end > -->
-  <% unless Transaction.where(user: current_user, product_id: @product.id).empty? %>
+  <% unless Transaction.where(user_id: current_user, product_id: @product.id).empty? %>
     <%= simple_form_for [@product, @review] do |f| %>
       <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
       <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
@@ -46,7 +46,7 @@
   <% @product.reviews.each do |review|%>
     <p><%= review.content %></p>
     <p><%= '🌟' * review.rating %></p>
-    <p><%= review.user.first_name %> got <%= Transaction.where(user: current_user, product_id: @product.id).last.quantity %> pieces on <%= Transaction.where(user: current_user, product_id: @product.id).last.created_at.strftime("%d/%m/%Y at %H:%M") %></p>
+    <p><%= review.user.first_name %> got <%= Transaction.where(user_id: review.user.id, product_id: @product.id).last.quantity %> pieces on <%= Transaction.where(user: review.user.id, product_id: @product.id).last.book.strftime("%d/%m/%Y at %H:%M") %></p>
     <hr>
   <% end %>
   <div id="map"
