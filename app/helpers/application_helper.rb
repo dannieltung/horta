@@ -3,7 +3,7 @@ module ApplicationHelper
     if product.photo.present?
       product.photo.key
     else
-      "sample"
+      "no-image-icon"
     end
   end
 

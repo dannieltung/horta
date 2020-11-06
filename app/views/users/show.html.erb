@@ -14,6 +14,7 @@
     <%= f.input :first_name, label: 'First Name' %>
     <%= f.input :last_name, label: 'Last Name' %>
     <%= f.input :delivery_address, label: 'Main Delivery Address' %>
-    <%= f.submit "Update⚙️!", class: 'btn btn-outline-success btn-sm' %>
+    <%= f.input :photo, as: :file, label: 'Photo' %>
+    <%= f.submit "Update! ⚙️", class: 'btn btn-outline-success btn-sm' %>
   <% end %>
 </div>

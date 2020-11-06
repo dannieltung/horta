@@ -1,4 +1,3 @@
-<div class="new_all">
   <div class="new_home">
     <%= link_to root_path do %>
       <div class="btn btn-success"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -8,6 +7,7 @@
       </div>
     <% end %>
   </div>
+<div class="new_all">
   <div class="new_head">
     <h1>New Item</h1>
     <div class="new_card">
@@ -16,11 +16,11 @@
         <%= f.input :stock, label: 'Availability' %>
         <%= f.input :price, label: 'Price per Unit' %>
         <%= f.input :address, label: 'Item Location' %>
-      </div>
-      <div class="new_confirm">
+    </div>
+    <div class="new_confirm">
         <%= f.input :photo, as: :file, label: 'Photo 📷' %>
-        <%= f.submit "Add!✔️", class: 'btn btn-success' %>
-      </div>
-    <% end %>
+        <%= f.submit 'Add ✔', class: 'btn btn-outline-success' %>
+    </div>
+      <% end %>
   </div>
 </div>
