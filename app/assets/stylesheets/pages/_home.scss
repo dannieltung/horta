@@ -1,13 +1,15 @@
 // Specific CSS for your home-page
-// h2 a {
-//   color: black;
-//   font-size: 30px;
+h2 a {
+  color: black;
+  font-family: 'Roboto';
+  font-size: 36px;
+  font-weight: bold;
 
-//   &:hover {
-//     color: orange;
-//     text-decoration: none;
-//   }
-// }
+  &:hover {
+    color: orange;
+    text-decoration: none;
+  }
+}
 
 // h4 {
 //   font-size: 15px;
