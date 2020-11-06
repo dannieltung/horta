@@ -48,6 +48,7 @@
 <% @product.reviews.each do |review|%>
   <p><%= review.content %></p>
   <p><%= '🌟' * review.rating %></p>
+  <%= review.user.first_name %>
   <hr>
 <% end %>
 <div id="map"

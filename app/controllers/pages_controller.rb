@@ -4,12 +4,6 @@ class PagesController < ApplicationController
   # require 'pry-byebug'
   # binding.pry
   def home
-    # user = current_user
-    # @markers = [{
-    #   lat: user.latitude,
-    #   lng: user.longitude
-    # }]
-    # fazer a marker do user tb aparecerem no mapa.
     products = Product.all.select do |product|
       product.stock.positive? && product.remove == false
     end
