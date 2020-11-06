@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>New Review</h1>
+  <%= simple_form_for [@product, @review] do |f| %>
+    <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
+    <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
+    <%= f.submit "Review it!", class: 'btn btn-success' %>
+  <% end %>
+</div>

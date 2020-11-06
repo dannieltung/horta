@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
 
-  # def new
-  #   @product = Product.find(params[:product_id])
-  #   @review = Review.new
-  # end
+  def new
+    @product = Product.find(params[:product_id])
+    @review = Review.new
+  end
 
   def create
     @product = Product.find(params[:product_id])
@@ -14,11 +14,10 @@ class ReviewsController < ApplicationController
       redirect_to root_path, notice: 'Not allowed to review this product.'
     end
 
-    # raise
     if @review.save
       redirect_to product_path(@product), notice: 'Thanks for Reviewing'
     else
-      redirect_to product_path(@product) and return
+      render :new
     end
   end
 
