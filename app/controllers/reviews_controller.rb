@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to product_path(@product), notice: 'Thanks for Reviewing'
     else
-      render :index
+      redirect_to product_path(@product) and return
     end
   end
 
