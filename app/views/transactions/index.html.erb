@@ -19,7 +19,7 @@
   </tr>
   <% @transactions.each do |transaction| %>
     <tr>
-      <td> <%= link_to transaction_path(transaction) do %>
+      <td><%= link_to transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } do %>
           <div class="btn btn-danger btn-sm"> Delete <i class="fas fa-trash"></i>
           </div>
         <% end %></td>
@@ -36,18 +36,24 @@
     <% @transactions.each do |transaction| %>
       <% grand_total += (transaction.quantity * transaction.product.price) %>
     <% end %>
-    <td><strong>Total</strong> USD <%= grand_total %>.00 </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td><strong>USD <%= grand_total %>.00</strong></td>
   </tr>
 </table>
-  <div class="buy">
-    <% @my_sold_transactions.each do |my_sold_transaction| %>
-      <hr>
-        <div class="buy_info">
-          <p>Sold Item: <%= my_sold_transaction.product.name %></p>
-          <p>Quantity: <%= my_sold_transaction.quantity %></p>
-          <p>Customer: <%= my_sold_transaction.user.first_name %></p>
-          <p>Arranged to: <%= my_sold_transaction.book %></p>
-        </div>
-      <hr>
-  </div>
-<% end %>
+<div class="buy">
+  <% @my_sold_transactions.each do |my_sold_transaction| %>
+    <hr>
+      <div class="buy_info">
+        <p>Sold Item: <%= my_sold_transaction.product.name %></p>
+        <p>Quantity: <%= my_sold_transaction.quantity %></p>
+        <p>Customer: <%= my_sold_transaction.user.first_name %></p>
+        <p>Arranged to: <%= my_sold_transaction.book %></p>
+      </div>
+    <hr>
+  <% end %>
+</div>
