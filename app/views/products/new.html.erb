@@ -7,6 +7,7 @@
       </div>
     <% end %>
   </div>
+
 <div class="new_all">
   <div class="new_head">
     <h1>New Item</h1>
@@ -17,10 +18,10 @@
         <%= f.input :price, label: 'Price per Unit' %>
         <%= f.input :address, label: 'Item Location' %>
     </div>
-    <div class="new_confirm">
+      <div class="new_confirm">
         <%= f.input :photo, as: :file, label: 'Photo 📷' %>
         <%= f.submit 'Add ✔', class: 'btn btn-outline-success' %>
-    </div>
+      </div>
       <% end %>
   </div>
 </div>
