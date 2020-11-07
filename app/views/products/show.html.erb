@@ -40,16 +40,20 @@
   <!-- < if @product.user == current_user || current_user.admin > -->
   <!-- <= link_to (content_tag(:i, 'Edit', class: "fas fa-edit" )), edit_product_path(@product), class: 'btn btn-outline-warning btn-sm' %> -->
   <!-- < end > -->
-  <% unless Transaction.where(user_id: current_user, product_id: @product.id).empty? %>
-    <%= simple_form_for [@product, @review] do |f| %>
-      <%= f.input :content, placeholder: 'Give us your thoughts about it...😉', label: false %>
-      <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
-      <%= f.submit "Review it!", class: 'btn btn-success' %>
+  <div class="review">
+    <% unless Transaction.where(user_id: current_user, product_id: @product.id).empty? %>
+      <%= simple_form_for [@product, @review] do |f| %>
+        <%= f.input :content, placeholder: 'Give us your thoughts about it...😉', label: false %>
+        <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
+        <%= f.submit "Review it!", class: 'btn btn-success' %>
+      <% end %>
     <% end %>
-  <% end %>
-  <% @product.reviews.each do |review|%>
-    <p><%= review.content %></p>
-    <p><strong><%= '⭐️' * review.rating %></strong></p>
-    <p><%= review.user.first_name %> reviewed on  <%= review.created_at.strftime("%d/%m/%Y") %></p>
-    <hr>
-  <% end %>
+    <div class="review_made">
+      <% @product.reviews.each do |review|%>
+        <p><%= review.content %></p>
+        <p><strong><%= '⭐️' * review.rating %></strong></p>
+        <p><%= review.user.first_name %> <%= review.user.last_name %> reviewed on <%= review.created_at.strftime("%d/%m/%Y") %></p>
+        <hr>
+      <% end %>
+    </div>
+</div>
