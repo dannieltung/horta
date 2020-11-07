@@ -15,6 +15,10 @@ h2 a {
 //   font-size: 15px;
 // }
 
+body {
+  background-image: url('stuff/back_fruits.png');
+}
+
 strong {
   color: #ec0101;
 }
@@ -45,7 +49,8 @@ strong {
   margin-left: 24px;
 }
 
-.card_infos h2 {
+.card_infos h2 a {
+  color: black;
   font-family: 'Roboto';
   font-size: 36px;
   font-weight: bold;
@@ -82,8 +87,6 @@ strong {
   padding-right: 12px;
 }
 
-// #map {
-//   height: 100%;
-//   width: 120px;
-// }
-
+.search {
+  margin-top: 8px;
+}

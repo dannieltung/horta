@@ -16,8 +16,24 @@
   border-radius: 4px
 }
 
-.index_items h2, h4{
+.index_items h4{
   font-family: 'Roboto';
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(133, 215, 241);
+}
+
+.index_items h2 a {
+  color: black;
+  font-family: 'Roboto';
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+
+    &:hover {
+    color: orange;
+    text-decoration: none;
+  }
 }
 
 .index_new {
