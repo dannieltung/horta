@@ -38,7 +38,7 @@
   <!-- < end > -->
   <% unless Transaction.where(user_id: current_user, product_id: @product.id).empty? %>
     <%= simple_form_for [@product, @review] do |f| %>
-      <%= f.input :content, placeholder: 'Give us your thoughts...😉', label: false %>
+      <%= f.input :content, placeholder: 'Give us your thoughts about it...😉', label: false %>
       <%= f.input :rating, placeholder: 'Rate it from 1 to 5.', label: false %>
       <%= f.submit "Review it!", class: 'btn btn-success' %>
     <% end %>
