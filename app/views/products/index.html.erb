@@ -4,12 +4,17 @@
   <% @products.each do |product| %>
     <% if product.remove == false %>
     <div class="index_items">
-      <h2> <%= link_to product.name, edit_product_path(product) %> </h2>
-      <h4> availability: <%= product.stock %> </h4>
-      <h4> price: USD <%= product.price %>.00 </h4>
+      <h2><%= link_to product.name, edit_product_path(product) %></h2>
+      <h4>Availability: <%= product.stock %></h4>
+      <h4>Price: USD <%= product.price %>.00</h4>
       <% if product.user == current_user %>
         <!-- < if product.user == current_user || current_user.admin > -->
         <!-- <= link_to (content_tag(:i, 'Delete', class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> -->
+        <%= link_to edit_product_path(product) do %>
+          <div class="btn btn-warning btn-sm"> Edit <i class="k fas fa-edit"></i>
+          </div>
+        <% end %>
+
         <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
           <div class="btn btn-danger btn-sm"> Delete <i class="fas fa-trash"></i>
           </div>

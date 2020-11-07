@@ -40,11 +40,12 @@ tr:nth-child(even) {background-color: #e6e6ff;}
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 8px;
-  background-color: rgba(0, 149, 255, 0.5);
+  background-color: rgba(0, 149, 255, 0.8);
 }
 .buy_info p {
   font-family: 'Roboto';
-  font-weight: 300;
+  font-weight: bold;
+  color: white;
   margin-bottom: 4px;
   padding-left: 16px;
 }
