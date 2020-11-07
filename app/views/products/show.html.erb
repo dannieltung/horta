@@ -1,8 +1,9 @@
 <!-- <p id="notice"><%= notice %></p> -->
-
-<% if @product.user == current_user %>
-  <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
-<% end %>
+<div class="check">
+  <% if @product.user == current_user %>
+    <%= link_to "Check my Itens", products_path, class: 'btn btn-secondary'%>
+  <% end %>
+</div>
 <div class="show_card">
   <h1> <%= @product.name %> </h1>
   <p> availability: <%= @product.stock %> </p>
