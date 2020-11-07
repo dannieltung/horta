@@ -1,6 +1,7 @@
 <!-- <h1><= "#{current_user.email}" %> Product's Index</h1> -->
 <div class="index_container">
   <% @products.each do |product| %>
+
     <% if product.remove == false %>
       <div class="product-info d-flex justify-content-start">
         <div>
@@ -27,6 +28,7 @@
         <% end %>
       </div>
     <% end %>
+
   <div class="index_new">
     <%= simple_form_for [Product.new] do |f| %>
       <%= f.input :name, placeholder: 'Item Name', label: false %>
