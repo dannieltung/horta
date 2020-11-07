@@ -8,7 +8,7 @@
 <% end %>
 
 <% if @product.user == current_user %>
-  <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
+  <%= link_to "Check my Itens", products_path, class: "btn btn-outline-secondary mt-8" %>
 <% end %>
 <div class="show_card">
   <h1> <%= @product.name %> </h1>
