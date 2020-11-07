@@ -48,3 +48,17 @@ tr:nth-child(even) {background-color: #e6e6ff;}
   padding-left: 16px;
 }
 
+td a {
+  color: black;
+  font-family: 'Roboto';
+  font-size: 15px;
+  font-weight: bold;
+
+  &:hover {
+    color: orange;
+    text-decoration: none;
+  }
+}
+
+
+

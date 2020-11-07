@@ -16,6 +16,11 @@
       <% end %>
       <div class="container_cards_2">
         <div class="card_infos">
+          <% sum = 0 %>
+          <% product.reviews.each do |review| %>
+            <% sum += review.rating %>
+          <% end %>
+          <h4><%= product.reviews.count > 0 ? '⭐' * (sum / product.reviews.count) : 'Not Rated' %></h4>
           <h2><%= link_to product.name, product %></h2>
           <p>USD <%= product.price %>.00</p>
           <% if product.stock > 3 %>

@@ -24,11 +24,11 @@
           </div>
         <% end %></td>
       <td><%= link_to transaction.id, transaction_path(transaction) %></td>
-      <td><%= transaction.created_at %></td>
-      <td><%= transaction.product.name %></td>
+      <td><%= transaction.created_at.strftime("%d/%m/%Y") %></td>
+      <td><%= link_to transaction.product.name, product_path(transaction.product) %></td>
       <td><%= transaction.quantity %></td>
-      <td>USD<%= transaction.product.price %>.00</td>
-      <td>USD<%= transaction.quantity * transaction.product.price %>.00</td>
+      <td>USD <%= transaction.product.price %>.00</td>
+      <td>USD <%= transaction.quantity * transaction.product.price %>.00</td>
     </tr>
   <% end %>
   <tr>

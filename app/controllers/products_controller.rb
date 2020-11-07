@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
     end
     # authorize @product
     @product.update(remove: true)
-    redirect_to root_path, notice: 'Product destroyed!'
+    redirect_to products_path, notice: 'Product destroyed!'
   end
 
   private

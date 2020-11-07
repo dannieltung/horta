@@ -45,8 +45,8 @@
   <% end %>
   <% @product.reviews.each do |review|%>
     <p><%= review.content %></p>
-    <p><%= '🌟' * review.rating %></p>
-    <p><%= review.user.first_name %> got <%= Transaction.where(user_id: review.user.id, product_id: @product.id).last.quantity %> pieces on <%= Transaction.where(user: review.user.id, product_id: @product.id).last.book.strftime("%d/%m/%Y at %H:%M") %></p>
+    <p><strong><%= '⭐️' * review.rating %></strong></p>
+    <p><%= review.user.first_name %> reviewed on  <%= review.created_at.strftime("%d/%m/%Y") %></p>
     <hr>
   <% end %>
   <div id="map"
