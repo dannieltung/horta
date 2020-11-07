@@ -4,11 +4,11 @@
 
 .mapboxgl-popup-content {
   text-align: left;
-  background-color: lightgray;
-  background-image: linear-gradient(45deg, #00a1ffa3 , yellow);
+  // background-color: lightgray;
+  // background-image: linear-gradient(45deg, #00a1ffa3 , yellow);
   border-radius: 4px;
   box-shadow: 4px 4px 8px 0px rgba (0, 0, 0, 0.1);
-
+  background-image: url('stuff/global-net_white.png');
 }
 
 .map_box h3{
