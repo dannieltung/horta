@@ -5,16 +5,6 @@
     <%= link_to "Check my Itens", products_path, class: 'btn btn-secondary'%>
   <% end %>
 </div>
-<div class="show_card">
-  <h1> <%= @product.name %> </h1>
-  <p> availability: <%= @product.stock %> </p>
-  <p> price: USD <%= @product.price %>.00 </p>
-  <p> location: <%= @product.address %> </p>
-  <p> <%= cl_image_tag product_image(@product), witdh: 200, height: 200, :alt => @product.name %></p>
-
-<% if @product.user == current_user %>
-  <%= link_to "Check my Itens", products_path, class: 'btn btn-outline-secondary' %>
-<% end %>
 <div class="show_card d-flex justify-content-between pr-2 rounded" >
   <div>
     <h1> <%= @product.name %> </h1>
@@ -31,7 +21,6 @@
      class="prduct-map rounded">
     </div>
   </div>
-
 </div>
 
   <% if @product.user == current_user %>
