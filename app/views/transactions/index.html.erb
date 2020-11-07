@@ -14,14 +14,14 @@
         <td><%= link_to transaction_path(transaction), method: :delete, data: { confirm: "Are you sure?" } do %>
           <div class="btn btn-danger btn-sm"> Delete <i class="fas fa-trash"></i>
           </div>
-          <% end %>
+        <% end %>
         </td>
-        <td><%= link_to transaction.id, transaction_path(transaction) %></td>
-        <td><%= transaction.created_at %></td>
-        <td><%= transaction.product.name %></td>
-        <td><%= transaction.quantity %></td>
-        <td>USD<%= transaction.product.price %>.00</td>
-        <td>USD<%= transaction.quantity * transaction.product.price %>.00</td>
+      <td><%= link_to transaction.id, transaction_path(transaction) %></td>
+      <td><%= transaction.created_at.strftime("%d/%m/%Y") %></td>
+      <td><%= link_to transaction.product.name, product_path(transaction.product) %></td>
+      <td><%= transaction.quantity %></td>
+      <td>USD <%= transaction.product.price %>.00</td>
+      <td>USD <%= transaction.quantity * transaction.product.price %>.00</td>
       </tr>
     <% end %>
     <tr>
@@ -38,6 +38,7 @@
       <td><strong>USD <%= grand_total %>.00</strong></td>
     </tr>
   </table>
+<h2> Sold Itens </h2>
   <div class="buy">
     <% @my_sold_transactions.each do |my_sold_transaction| %>
       <hr>

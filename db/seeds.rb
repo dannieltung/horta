@@ -14,6 +14,9 @@ Product.destroy_all
 puts "Destroying all users..."
 User.destroy_all
 
+puts "Destroying all reviews..."
+Review.destroy_all
+
 puts "Seeding Start..."
 1.times do
   user = User.create(
@@ -32,7 +35,6 @@ puts "Seeding Start..."
       address: "Avenida Paulista, 320 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
   1.times do
     product = Product.create(
@@ -42,7 +44,6 @@ puts "Seeding Start..."
       address: "Rua Frei Caneca, 569 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
   1.times do
     product = Product.create(
@@ -52,7 +53,6 @@ puts "Seeding Start..."
       address: "Rua Augusta, 2499 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
 end
 
@@ -73,7 +73,6 @@ end
       address: "Rua Augusta, 2860 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
   1.times do
     product = Product.create(
@@ -83,7 +82,6 @@ end
       address: "Rua São Bento, 293 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
   1.times do
     product = Product.create(
@@ -93,7 +91,6 @@ end
       address: "Avenida da Liberdade, 863 São Paulo",
       user_id: user.id
     )
-    puts "Product id# #{product.id} created."
   end
 end
 
