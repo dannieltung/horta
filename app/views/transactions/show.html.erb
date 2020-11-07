@@ -1,9 +1,10 @@
-<div class="trans_total">
+<div class="trans_show">
   <p id="notice"><%= notice %></p>
-  <h1> Transaction id# <%= @transaction.id %> </h1>
-  <p> item: <%= @product.name %> </p>
-  <p> quantity: <%= @transaction.quantity %> </p>
-  <p> price per unit: USD <%= @product.price %>.00 </p>
-  <p> total: USD <%= @product.price * @transaction.quantity %>.00 </p>
-  <p>Thanks <strong> <%= @user.first_name %> <%= @user.last_name %> </strong> for your business! </p>
+  <h1>Transaction id# <%= @transaction.id %></h1>
+  <hr>
+  <p>item: <%= @product.name %></p>
+  <p>quantity: <%= @transaction.quantity %></p>
+  <p>price per unit: USD <%= @product.price %>.00</p>
+  <p>total: USD <%= @product.price * @transaction.quantity %>.00</p>
+  <p>Thanks <strong> <%= @user.first_name %> <%= @user.last_name %> </strong> for your business!</p>
 </div>
