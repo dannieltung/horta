@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def reset_password
+    @user = User.find(params[:id]).reset_password(password, password)
+  end
+
   private
 
   def user_params
