@@ -3,8 +3,7 @@ ValidatesTimeliness.setup do |config|
   config.extend_orms = [ :active_record ]
   #
   # Default timezone
-  config.default_timezone = :brt
-
+  config.default_timezone = :EDT
   #
   # Set the dummy date part for a time type values.
   # config.dummy_date_for_time_type = [ 2000, 1, 1 ]
