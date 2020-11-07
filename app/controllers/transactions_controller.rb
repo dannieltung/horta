@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.user = current_user
 
-    # raise
+
     # fazer as seguintes checagens:
     # @transaction.valid?
     # @transaction.errors.messages
