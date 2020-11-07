@@ -41,6 +41,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pry-byebug'
 
 gem 'pg_search', '~> 2.3.0'
+gem 'validates_timeliness', '~> 5.0.0.beta1'
 
 group :development, :test do
   gem 'pry-byebug'

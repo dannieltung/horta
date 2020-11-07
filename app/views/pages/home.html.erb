@@ -12,44 +12,42 @@
     <% end %>
   </div>
   <% @products.each do |product| %>
-
-      <div class="container_card">
-
-        <%= link_to(product) do %>
-          <%= cl_image_tag product_image(product), class: "ima_tag", crop: :fill, :alt => product.name %>
-        <% end %>
-
-        <div class="container_cards_2">
-
-          <div class="card_infos">
-            <h2><%= link_to product.name, product %></h2>
-            <p>USD <%= product.price %>.00</p>
-            <% if product.stock > 3 %>
-              <p> <%= "#{product.stock} available" %> </p>
-              <% else %>
-              <p><strong><%= "Only #{product.stock} available!" %></strong></p>
-            <% end %>
-
-            <% if product.user == current_user %>
-              <!-- < if product.user == current_user || current_user.admin > -->
-
-              <!-- <= link_to (content_tag(:i, 'Edit', class: "k fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %> -->
-              <div class="buttons_1">
-                <%= link_to edit_product_path(product) do %>
-                  <div class="btn btn-outline-warning btn-sm"> Edit <i class="k fas fa-edit"></i>
-                  </div>
-                <% end %>
-                <!-- class: 'btn btn-outline-warning' -->
-
-                <!-- <= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %> -->
-                <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
-                  </div>
-                <% end %>
-            <!-- class="btn btn-danger" -->
-                <!-- <= image_tag("stuff/fruit.png") %> -->
-              </div>
-            <% end %>
+    <div class="container_card">
+      <%= link_to(product) do %>
+        <%= cl_image_tag product_image(product), class: "ima_tag", crop: :fill, :alt => product.name %>
+      <% end %>
+      <div class="container_cards_2">
+        <div class="card_infos">
+          <% sum = 0 %>
+          <% product.reviews.each do |review| %>
+            <% sum += review.rating %>
+          <% end %>
+          <h4><%= product.reviews.count > 0 ? '⭐' * (sum / product.reviews.count) : 'Not Rated' %></h4>
+          <h2><%= link_to product.name, product %></h2>
+          <p>USD <%= product.price %>.00</p>
+          <% if product.stock > 3 %>
+            <p> <%= "#{product.stock} available" %> </p>
+          <% else %>
+            <p><strong><%= "Only #{product.stock} available!" %></strong></p>
+          <% end %>
+          <% if product.user == current_user %>
+            <!-- < if product.user == current_user || current_user.admin > -->
+            <!-- <= link_to (content_tag(:i, 'Edit', class: "k fas fa-edit")), edit_product_path(product), class: 'btn btn-outline-warning btn-sm' %> -->
+            <div class="buttons_1">
+              <%= link_to edit_product_path(product) do %>
+                <div class="btn btn-outline-warning btn-sm"> Edit <i class="k fas fa-edit"></i>
+                </div>
+              <% end %>
+              <!-- class: 'btn btn-outline-warning' -->
+              <!-- <= link_to (content_tag(:i, "Delete", class: "fas fa-trash")), product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %> -->
+              <%= link_to product_path(product), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <div class="btn btn-outline-danger btn-sm"> Delete <i class="fas fa-trash"></i>
+                </div>
+              <% end %>
+              <!-- class="btn btn-danger" -->
+              <!-- <= image_tag("stuff/fruit.png") %> -->
+            </div>
+          <% end %>
         </div>
         <div class="trans_from">
           <%= simple_form_for [Transaction.new] do |f| %>

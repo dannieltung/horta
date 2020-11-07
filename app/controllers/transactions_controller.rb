@@ -32,8 +32,7 @@ class TransactionsController < ApplicationController
     # fazer as seguintes checagens:
     # @transaction.valid?
     # @transaction.errors.messages
-
-    if @transaction.quantity <= Product.find(@transaction.product_id).stock && @transaction.save
+    if @transaction.quantity.present? && @transaction.quantity <= Product.find(@transaction.product_id).stock && @transaction.save
       after_stock = Product.find(@transaction.product_id).stock - @transaction.quantity
       Product.find(@transaction.product_id).update(stock: after_stock)
       redirect_to transaction_path(@transaction), notice: 'Transaction created!'
