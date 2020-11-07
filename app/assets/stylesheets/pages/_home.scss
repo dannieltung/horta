@@ -71,7 +71,7 @@ strong {
 }
 
 .buttons_1 {
-  padding-top: 36px;
+  padding-top: 24px;
 }
 
 .container_cards_2 {
@@ -89,4 +89,9 @@ strong {
 
 .search {
   margin-top: 8px;
+}
+.map_border {
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: 8px 4px 8px 4px #0000001c;
 }
